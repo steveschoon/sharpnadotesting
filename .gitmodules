@@ -1,0 +1,3 @@
+[submodule "Sharpnado.Tabs"]
+	path = Sharpnado.Tabs
+	url = git@github.com:steveschoon/Sharpnado.Tabs.git

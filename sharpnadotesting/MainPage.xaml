@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sho="http://sharpnado.com" 
+    x:Class="sharpnadotesting.MainPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="SegmentedTabStyle" TargetType="sho:SegmentedTabItem">
+            <Setter Property="SelectedTabColor" Value="Orange" />
+            <Setter Property="LabelSize" Value="14" />
+            <Setter Property="SelectedLabelColor" Value="White" />
+            <Setter Property="UnselectedLabelColor" Value="Yellow" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+        	<sho:TabHostView 
+				BackgroundColor="Gray"
+				CornerRadius="5"
+				IsSegmented="True"
+				ItemsSource="{Binding Items}"
+				HeightRequest="60"
+				Margin="0,0,0,4"
+				Padding="4,0"
+				SegmentedHasSeparator="True"
+				SegmentedOutlineColor="Red"
+                SelectedIndex="{Binding ItemIndex, Mode=TwoWay}"
+				TabType="Fixed" >
+				<sho:TabHostView.ItemTemplate>
+					<DataTemplate>
+						<sho:SegmentedTabItem Label="{Binding ItemName}" Style="{StaticResource SegmentedTabStyle}" />
+					</DataTemplate>
+				</sho:TabHostView.ItemTemplate>
+			</sho:TabHostView>
+
+            <Button Command="{Binding AddItem}" Text="Add Item"/>
+            <Button Command="{Binding Deselect}" Text="Deselect"/>
+            <Button Command="{Binding RemoveItem}" Text="Remove Item"/>
+            <Button Command="{Binding SelectNext}" Text="Next"/>
+            <Button Command="{Binding Clear}" Text="Clear"/>
+            <Label Text="{Binding SelectedItemText}"/>
+        </StackLayout>
+	</ContentPage.Content>
+
+</ContentPage>
